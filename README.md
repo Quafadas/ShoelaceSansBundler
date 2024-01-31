@@ -36,12 +36,14 @@ In browser tests driven purely by the JVM API of [playwright](https://playwright
 
 ## Structure
 
-- /facade is the scalajs project that one would seek to publish. In this case, it contains a very simple facade for @stdlib/linspace. This project, would be publishable. It should be useable upstream, as long as the dependancies in the importmap.json are resolved through either ESModule or a bundler.
+- /shoelace is the scalajs project that one would seek to publish. In this case, it makes very simple use of a shoelace facade https://github.com/raquo/laminar-shoelace-components.
 
-- /testDir contains a traditional scala-cli (JVM) project which is nothing more than a test harness for the facade.
+Shoelace is resolved via ESM, with the import re-written via the importmap.json file. Then resolved in browser.
+
+- /testDir contains a traditional scala-cli (JVM) project which is nothing more than a test harness for the facade, which wheels in playwriter to test stuff.
 
 Nits
 
 - Two seperate scala-cli projects, is _slightly_ more complex than I wanted. I don't think they can be mixed though, as it would require seperate dependancies per platform.
 
-- Need to land https://github.com/VirtusLab/scala-cli/issues/2698 as the scalaJsCli just task is currently rather complex!
+- Need to land https://github.com/VirtusLab/scala-cli/issues/2698 as the scalaJsCli just task is currently painful, to get the classpath right!
