@@ -1,6 +1,6 @@
 # ShoelaceSansBundlerTest
 
-scala facade to shoelace in browser, sans vite, sans sbt, mit scala-cli.
+scala & shoelace in browser, sans vite, sans sbt, mit scala-cli.
 
 # Dependancies
 
