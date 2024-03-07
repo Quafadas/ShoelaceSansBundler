@@ -1,5 +1,5 @@
 
-Serve a static site with laminar and shoelace. No bundler.
+One file static site with laminar and shoelace. No bundler.
 
 # Dependancies
 
@@ -9,13 +9,12 @@ Serve a static site with laminar and shoelace. No bundler.
 # Quickstart
 
 ```sh
-just --list
-just inspectManually
+just
 ```
 
-## Development
+## Development locally
 
-The `quickstart` puts up a server, which will not reload stuff.
+The `just` puts up a server, which will not reload stuff.
 
 ```sh
 just buildJsW
