@@ -11,10 +11,13 @@ One file static site with laminar and shoelace. No bundler.
 ```sh
 just
 ```
+If you don't have / want *just*, then you can still easily read the justfile and puzzle it out :-).
+
+This will setup the ide, write out a simple `html.index`, compile and link scalaJs into the `out` directory, and start a server.
 
 ## Development locally
 
-The `just` puts up a server, which will not reload stuff.
+The `just` command  puts up a server, which will not reload stuff. Kill it.
 
 ```sh
 just buildJsW
