@@ -4,6 +4,9 @@ default: setupIde manuallyInspect
 # JVM tests - compile, link and serve
 manuallyInspect: buildJs writeHtmlFile serve
 
+gha: buildJs writeHtmlFile
+#
+
 # JVM tests - start server, use playwright to test
 test:
   @echo "Testing"
@@ -24,5 +27,4 @@ setupIde:
   scala-cli setup-ide .
 
 writeHtmlFile:
-  @echo "Writing HTML file"
   echo "<html class="sl-theme-dark"><head><link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/themes/dark.css'/><script type='module' src='./main.js'></script></head><body><div id="app"></div></body></html>" > out/index.html

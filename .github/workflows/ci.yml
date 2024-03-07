@@ -29,7 +29,7 @@ jobs:
         with:
           power: true
       - uses: taiki-e/install-action@just
-      - run: just buildJs
+      - run: just gha
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - uses: actions/upload-artifact@v3
