@@ -1,0 +1,60 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: ['main']
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+concurrency:
+  group: ${{ github.workflow }} @ ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: build
+    if: github.ref == 'refs/heads/main'
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: coursier/cache-action@v6.3
+      - uses: VirtusLab/scala-cli-setup@main
+        with:
+          power: true
+      - uses: taiki-e/install-action@just
+      - run: just buildJs
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      - uses: actions/upload-artifact@v3
+        with:
+          name: page
+          path: out
+          if-no-files-found: error
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/download-artifact@v3
+      with:
+        name: page
+        path: .
+    - uses: actions/configure-pages@v4
+    - uses: actions/upload-pages-artifact@v2
+      with:
+        path: .
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v3
