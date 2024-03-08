@@ -27,4 +27,5 @@ setupIde:
   scala-cli setup-ide .
 
 writeHtmlFile:
+  mkdir -p out
   echo "<html class="sl-theme-dark"><head><link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/themes/dark.css'/><script type='module' src='./main.js'></script></head><body><div id="app"></div></body></html>" > out/index.html
