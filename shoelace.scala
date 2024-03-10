@@ -86,7 +86,6 @@ object Foo {
                 )
               )
               val theme = EmbedOptions(theme = "dark")
-              println(JSON.stringify(theme))
               LaminarViz.simpleEmbed(barChart, Some(chartDiv), Option(theme))
             },
           ),
