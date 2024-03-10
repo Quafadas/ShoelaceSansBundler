@@ -38,6 +38,9 @@ object Foo {
     val value1 = Var(5.0)
     val value2 = Var(10.0)
     val data = Var(List(2.4, 3.4, 5.1, -2.3))
+    val dataSig = data.signal.combineWith(value1.signal, value2.signal).map{ (data, v1, v2) =>
+      data :+ v1 :+ v2
+    }
     val chartDiv = div(
       width := "40vmin",
       height := "40vmin",
@@ -78,7 +81,7 @@ object Foo {
           ),
           p("test charting"),
           p(
-            child <-- data.signal.map { data =>
+            child <-- dataSig.map { data =>
               val barChart: BarChart = data.plotBarChart(
                 List(
                   viz.Utils.fillDiv,
