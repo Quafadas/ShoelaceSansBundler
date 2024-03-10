@@ -4,8 +4,8 @@
 //> using dep com.raquo::laminar-shoelace::0.1.0-M2
 //> using dep com.raquo::laminar::17.0.0-M6
 
-//> using dep io.github.quafadas::dedav4s::0.9-5498682-20240308T115005Z-SNAPSHOT
-//> using dep io.github.quafadas::dedav_laminar::0.9-5498682-20240308T115005Z-SNAPSHOT
+//> using dep io.github.quafadas::dedav4s::0.9-27f83db-20240308T172356Z-SNAPSHOT
+//> using dep io.github.quafadas::dedav_laminar::0.9-27f83db-20240308T172356Z-SNAPSHOT
 
 //> using jsModuleKind es
 //> using jsEsModuleImportMap importmap.json

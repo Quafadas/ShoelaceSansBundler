@@ -1,6 +1,7 @@
 {
   "imports": {
     "@shoelace-style/shoelace/dist/": "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.13.1/cdn/",
-    "@vega/npm/": "https://cdn.jsdelivr.net/npm/"
+    "##vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6/+esm",
+    "##vega-view": "https://cdn.jsdelivr.net/npm/vega-view@5/+esm"
   }
 }
