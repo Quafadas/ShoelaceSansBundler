@@ -4,6 +4,7 @@ One file static site with laminar and shoelace. No bundler.
 # Dependancies
 
 - https://github.com/casey/just
+- [playwright](https://playwright.dev/java/) for testing
 - [scala-cli](https://scala-cli.virtuslab.org)
 
 # Quickstart
@@ -13,11 +14,21 @@ just
 ```
 If you don't have / want *just*, then you can still easily read the justfile and puzzle it out :-).
 
-This will setup the ide, write out a simple `html.index`, compile and link scalaJs into the `out` directory, and start a server.
+```sh
+just setupIde
+just buildJs
+just serve
+just installPlaywrightBundle
+just test
+```
+
+Bonus points
+
+```sh
+just recordATest
+```
 
 ## Development locally
-
-The `just` command  puts up a server, which will not reload stuff. Kill it.
 
 ```sh
 just buildJsW
