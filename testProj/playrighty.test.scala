@@ -16,26 +16,12 @@ import com.sun.net.httpserver.SimpleFileServer
 import java.nio.file.Paths
 import com.microsoft.playwright.impl.driver.Driver
 
+/*
+Run
+cs launch com.microsoft.playwright:playwright:1.41.1 -M "com.microsoft.playwright.CLI" -- install --with-deps
+before this test, to make sure that the driver bundles are downloaded.
+  */
 class PlaywrightTest extends munit.FunSuite:
-
-  // val env = new java.util.HashMap[String, String]();
-  // env.put("PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD", "1");
-  // val createOptions = new Playwright.CreateOptions();
-  // createOptions.setEnv(env);
-
-  // val browserType = new BrowserType.LaunchOptions()
-  //   .setExecutablePath(Paths.get("Path/to/browser.exe"))
-  //   .setHeadless(false)
-  //   .setChromiumSandbox(true)
-
-
-  // val browser = Playwright.create(createOptions).chromium().launch(
-
-  // context = browser.newContext(
-  // new Browser.NewContextOptions()
-  // .setViewportSize(1800, 1080)
-
-  // val driver = Driver.createAndInstall(new java.util.HashMap[String, String](), false)
 
   val port = 8080
   var pw: Playwright = uninitialized
@@ -45,7 +31,6 @@ class PlaywrightTest extends munit.FunSuite:
 
   override def beforeAll(): Unit =
 
-    // System.setProperty("playwright.driver.impl", "jsenv.DriverJar")
     pw = Playwright.create()
     browser = pw.chromium().launch();
     page = browser.newPage();
