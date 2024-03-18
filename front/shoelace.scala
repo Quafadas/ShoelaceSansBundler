@@ -34,6 +34,9 @@ import viz.vega.facades.EmbedOptions
 import scala.scalajs.js.JSON
 
 object Foo {
+
+  // val i : Int = "s"
+
   def main(args: Array[String]): Unit =
     val value1 = Var(5.0)
     val value2 = Var(10.0)
