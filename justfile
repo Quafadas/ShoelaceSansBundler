@@ -25,7 +25,7 @@ serve:
 
 ## Useful for live reload along with "live server" - I found live server to work in Edge (windows) and safari (mac)
 buildJsW:
-  scala-cli --power package shoelace.scala -o {{outDir}} -f -w
+  scala-cli --power package front/shoelace.scala -o {{outDir}} -f -w
 
 ## Builds the front end project
 buildJs:
