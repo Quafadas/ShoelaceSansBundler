@@ -1,6 +1,8 @@
-outDir := justfile_directory() + "/.out"
-frontDir := justfile_directory() + "/front"
-testDir := justfile_directory() + "/test"
+set shell := ["pwsh", "-c"]
+
+outDir := justfile_directory() + "\\.out"
+frontDir := justfile_directory() + "\\front"
+testDir := justfile_directory() + "\\test"
 
 
 # This list of available targets
@@ -12,7 +14,6 @@ manuallyInspect: buildJs writeHtmlFile serve
 
 # For us in GHA - should create everything needed to publish this example
 gha: buildJs writeHtmlFile test
-
 # JVM tests - start server, use playwright to test
 test $SHOELACE_SANS_OUT_DIR=outDir:
   @echo "Testing"
@@ -20,7 +21,7 @@ test $SHOELACE_SANS_OUT_DIR=outDir:
 
 # Serve the ESModule linked directory - viewable in browser for manual inspection
 serve:
-  cs launch io.github.quafadas:sjsls_3:0.2.0 -- --project-dir {{frontDir}} --out-dir {{outDir}} --port 3005
+  cs launch io.github.quafadas::sjsls:0.2.0 -- --project-dir {{frontDir}} --out-dir {{outDir}} --port 3005 --extra-build-args --js-cli-on-jvm --path-to-index-html C:\\temp\\ShoelaceSansBundler\\assets
 
 ## Useful for live reload along with "live server" - I found live server to work in Edge (windows) and safari (mac)
 buildJsW:

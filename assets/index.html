@@ -1,0 +1,67 @@
+<html>
+
+<head>
+    <meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate">
+    </meta>
+    <script type="importmap">
+        {
+            "imports": {
+                "@ui5/webcomponents-localization/": "https://cdn.jsdelivr.net/npm/@ui5/webcomponents-localization@1.24.7/",
+                "@ui5/webcomponents/": "https://cdn.jsdelivr.net/npm/@ui5/webcomponents@1.24.7/",
+                "@ui5/webcomponents-theming/": "https://cdn.jsdelivr.net/npm/@ui5/webcomponents-theming@1.24.7/",
+                "@ui5/webcomponents-icons/": "https://cdn.jsdelivr.net/npm/@ui5/webcomponents-icons@1.24.7/",
+                "@ui5/webcomponents-base/": "https://cdn.jsdelivr.net/npm/@ui5/webcomponents-base@1.24.7/",
+                "@sap-theming/": "https://cdn.jsdelivr.net/npm/@sap-theming@1.24.7/",
+                "@types/openui5/": "https://cdn.jsdelivr.net/npm/@types/openui5@1.24.7/",
+                "@types/jquery/": "https://cdn.jsdelivr.net/npm/@types/jquery/",
+                "lit-html": "https://cdn.jsdelivr.net/npm/lit-html",
+                "lit-html/": "https://cdn.jsdelivr.net/npm/lit-html/"
+            }
+        }
+  </script>
+</head>
+
+<body>
+    <script src="/main.js" type="module"></script>
+    <div id="app"></div>
+    <script type="module">
+        // @ts-nocheck
+import { registerLocaleDataLoader } from "@ui5/webcomponents-base/dist/asset-registries/LocaleData.js";
+const availableLocales = ["ar", "ar_EG", "ar_SA", "bg", "ca", "cnr", "cs", "da", "de", "de_AT", "de_CH", "el", "el_CY", "en", "en_AU", "en_GB", "en_HK", "en_IE", "en_IN", "en_NZ", "en_PG", "en_SG", "en_ZA", "es", "es_AR", "es_BO", "es_CL", "es_CO", "es_MX", "es_PE", "es_UY", "es_VE", "et", "fa", "fi", "fr", "fr_BE", "fr_CA", "fr_CH", "fr_LU", "he", "hi", "hr", "hu", "id", "it", "it_CH", "ja", "kk", "ko", "lt", "lv", "ms", "mk", "nb", "nl", "nl_BE", "pl", "pt", "pt_PT", "ro", "ru", "ru_UA", "sk", "sl", "sr", "sr_Latn", "sv", "th", "tr", "uk", "vi", "zh_CN", "zh_HK", "zh_SG", "zh_TW"];
+const importCldrJson = async (localeId) => {
+    switch (localeId) {
+        case "en": return (await (await fetch(/* webpackChunkName: "ui5-webcomponents-cldr-en" */ "https://cdn.jsdelivr.net/npm/@ui5/webcomponents-localization@1.24.7/dist/generated/assets/cldr/en.json")).json());
+        default: throw "unknown locale";
+    }
+};
+
+const importAndCheck = async (localeId) => {
+    const data = await importCldrJson(localeId);
+    if (typeof data === "string" && data.endsWith(".json")) {
+        throw new Error(`[LocaleData] Invalid bundling detected - dynamic JSON imports bundled as URLs. Switch to inlining JSON files from the build or use 'import ".../Assets-static.js"'. Check the "Assets" documentation for more information.`);
+    }
+    return data;
+};
+availableLocales.forEach(localeId => registerLocaleDataLoader(localeId, importAndCheck));
+//# sourceMappingURL=LocaleData.js.map
+    </script>
+    <script type="module">
+        import "@ui5/webcomponents/dist/DatePicker.js";
+    </script>
+    <ui5-button>can focus</ui5-button>
+    <ui5-date-picker></ui5-date-picker>
+</body>
+
+    <script>const sse = new EventSource('/refresh/v1/sse');
+        sse.addEventListener('message', (e) => {
+            const msg = JSON.parse(e.data)
+
+            if ('KeepAlive' in msg)
+                console.log("KeepAlive")
+
+            if ('PageRefresh' in msg)
+                location.reload()
+        });</script>
+</body>
+
+</html>

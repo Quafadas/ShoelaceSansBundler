@@ -41,86 +41,6 @@ import scala.scalajs.js.JSON
 
 import org.scalajs.dom.document
 
-// @js.native
-// @JSImport("@easepick/bundle@1.2.1/+esm", "easepick")
-// class easepick extends js.Object {
-
-//   def create(opts: EasepickOptions): Unit = js.native
-// }
-
-// @js.native
-// trait Easepick extends js.Object {
-//   def create(props: EasepickOptions): Easepick = js.native
-// }
-
-// @js.native
-// trait EasepickOptions extends js.Object {
-//   var css: js.UndefOr[String | js.Array[String]] = js.native
-//   var element: js.UndefOr[String] = js.native
-//   var zIndex: js.UndefOr[Int] = js.native
-//   // Add other options as needed
-// }
-
-// object EasepickOptions {
-//   def apply(
-//       css: js.UndefOr[String | js.Array[String]] = js.undefined,
-//       element: js.UndefOr[String] = js.undefined,
-//       zIndex: js.UndefOr[Int] = js.undefined
-//   ): EasepickOptions = {
-//     val options = (new js.Object).asInstanceOf[EasepickOptions]
-//     element.foreach(options.element = _)
-//     css.foreach(options.css = _)
-//     zIndex.foreach(options.zIndex = _)
-//     options
-//   }
-// }
-
-// object EasepickWrapper {
-//   def create(options: EasepickOptions): Unit = {
-//     new easepick().create(options)
-//   }
-// }
-
-def used(any: Any): Unit = ()
-
-object DatePicker extends WebComponent {
-
-  // noinspection ScalaUnusedSymbol
-  @js.native
-  trait RawElement extends js.Object {
-    def dateValue: js.Date = js.native
-
-    var value: String = js.native
-
-    def closePicker(): Unit = js.native
-
-    def formatValue(date: js.Date): String = js.native
-
-    def isInValidRange(input: String): Boolean = js.native
-
-    def isOpen(): Boolean = js.native
-
-    def isValid(value: String): Boolean = js.native
-
-    def openPicker(): Unit = js.native
-
-    def create(opts: js.Object): Unit = js.native
-  }
-
-  // object-s are lazy so you need to actually use them in your code to prevent dead code elimination
-  used(RawImport)
-
-  type Ref = dom.html.Element & RawElement
-
-  protected val tag: CustomHtmlTag[Ref] = CustomHtmlTag("easepick")
-
-  @js.native
-  @JSImport(
-    "@vaadin/date-picker@24.4.3/+esm",
-    JSImport.Namespace
-  )
-  object RawImport extends js.Object
-}
 
 object Foo {
 
@@ -131,30 +51,12 @@ object Foo {
     renderOnDomContentLoaded(
       dom.document.getElementById("app"),
       div(
-        h1("Hello Laminar!"),
+        h1("Hello Laminar and ui5 webcomponents!"),
+        p("plus fast reload"),
         div(
           input(idAttr := "input1"),
-          sl.Input(),
-          DatePicker()
-          // onMountCallback { _ =>
-          //   EasepickWrapper.create(EasepickOptions.apply {
-          //     val element = "#input1"
-          //     val zIndex = 1000
-          //   })
-          // }
+          sl.Input()
         )
-        // p(
-        //   child <-- dataSig.map { data =>
-        //     val barChart: BarChart = data.plotBarChart(
-        //       List(
-        //         viz.Utils.fillDiv,
-        //         (spec : ujson.Value) => spec.obj("background") = "rgb(0, 0, 0, 0)"
-        //       )
-        //     )
-        //     val theme = EmbedOptions(theme = "dark")
-        //     LaminarViz.simpleEmbed(barChart, Some(chartDiv), Option(theme))
-        //   },
-        // ),
       )
     )
   }
