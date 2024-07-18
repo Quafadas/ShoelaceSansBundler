@@ -6,6 +6,7 @@
 //> using dep com.microsoft.playwright:driver-bundle:1.41.1
 //> using dep com.lihaoyi::os-lib:0.9.3
 
+
 import scala.compiletime.uninitialized
 import com.microsoft.playwright.*
 import com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat

@@ -20,8 +20,7 @@ test $SHOELACE_SANS_OUT_DIR=outDir:
 
 # Serve the ESModule linked directory - viewable in browser for manual inspection
 serve:
-  @echo "Serving, be default this directory, port 8000"
-  $JAVA_HOME/bin/jwebserver -d {{outDir}}
+  cs launch io.github.quafadas:sjsls_3:0.2.0 -- --project-dir {{frontDir}} --out-dir {{outDir}} --port 3005
 
 ## Useful for live reload along with "live server" - I found live server to work in Edge (windows) and safari (mac)
 buildJsW:
